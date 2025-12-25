@@ -135,6 +135,15 @@ export const PROJECTS = [
   },
 ];
 
+export const EXPERIENCE = [
+  {
+    year: "2021 - 2022",
+    role: "Junior Developer",
+    company: "Hallow Tech Pvt. Ltd.",
+    companyUrl: "https://hallow-tech.com/",
+    description: `As a Junior Developer at Hallow Tech, I contributed to the development and maintenance of various web applications. My responsibilities included writing clean and efficient code, collaborating with senior developers to implement new features, troubleshooting issues to ensure optimal performance alongside and maintaining, updating databases. This role allowed me to enhance my programming skills and gain practical experience in a professional development environment.`,
+  }
+]
 export const EDUCATIONS = [
   {
     year: "2023 - Present",
