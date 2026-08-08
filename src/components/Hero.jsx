@@ -1,65 +1,71 @@
-import { HERO_CONTENT } from "../constants/index";
+import { HERO_CONTENT, CONTACT } from "../constants/index";
 import profilePic from "../assets/myImg.jpg";
 import { motion } from "framer-motion";
+import { FiDownload } from "react-icons/fi";
 
-const container = (delay) => ({
-  hidden: { x: -100, opacity: 0 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: delay,
-      duration: 0.5,
-    },
-  },
+const fadeUp = (delay) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.6, ease: "easeOut" },
 });
 
 const Hero = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-1/2">
-          <div className="flex flex-col items-center lg:items-start">
-            <motion.h1
-              variants={container(0)}
-              initial="hidden"
-              animate="visible"
-              className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl"
-            >
-              Ashish Shrees
-            </motion.h1>
-            <motion.span
-              variants={container(0.5)}
-              initial="hidden"
-              animate="visible"
-              className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-3xl tracking-tight text-transparent"
-            >
-              Software Developer
-            </motion.span>
-            <motion.p
-              variants={container(1)}
-              initial="hidden"
-              animate="visible"
-              className="my-2 max-w-xl py-6 font-light tracking-tighter"
-            >
-              {HERO_CONTENT}
-            </motion.p>
-          </div>
-        </div>
-        <div className="w-full lg:w-1/2 lg:p-8">
-          <div className="flex justify-center">
-            <motion.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="rounded-2xl"
-              src={profilePic}
-              alt="Ashish Shrees"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <section id="top" className="pb-20 pt-32 md:pt-40">
+      <motion.img
+        {...fadeUp(0)}
+        src={profilePic}
+        alt="Ashish Shrees"
+        className="h-16 w-16 rounded-full object-cover grayscale transition duration-500 hover:grayscale-0"
+      />
+      <motion.p
+        {...fadeUp(0.1)}
+        className="mt-8 text-sm font-medium uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400"
+      >
+        Software Developer
+      </motion.p>
+      <motion.h1
+        {...fadeUp(0.2)}
+        className="mt-3 text-5xl font-semibold tracking-tight text-neutral-900 md:text-7xl dark:text-neutral-50"
+      >
+        Ashish Shrees
+      </motion.h1>
+      <motion.p
+        {...fadeUp(0.3)}
+        className="mt-6 max-w-xl leading-relaxed text-neutral-500 dark:text-neutral-400"
+      >
+        {HERO_CONTENT}
+      </motion.p>
+      <motion.div
+        {...fadeUp(0.4)}
+        className="mt-10 flex flex-wrap items-center gap-4"
+      >
+        <a
+          href={`mailto:${CONTACT.email}`}
+          className="rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+          Get in touch
+        </a>
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-900 dark:border-neutral-700 dark:text-neutral-100 dark:hover:border-neutral-400"
+        >
+          Resume <FiDownload />
+        </a>
+      </motion.div>
+      <motion.p
+        {...fadeUp(0.5)}
+        className="mt-8 flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400"
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+        </span>
+        Open to opportunities · Anywhere in Canada
+      </motion.p>
+    </section>
   );
 };
 

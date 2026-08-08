@@ -1,174 +1,79 @@
-export const HERO_CONTENT = `I am a Full-Stack Developer. I have 3 years of hands-on experience in Object-oriented Programming, Web Development, Database Management Systems (DBMS), System Design and Project Management. I'm passionate about building efficient, scalable software and continuously learning new technologies to solve real-world problems.`;
+export const HERO_CONTENT = `I'm a software developer and Computer Programming graduate from Seneca Polytechnic, building web applications and RESTful APIs across the full stack — React, TypeScript, Node.js, Python, and SQL. Lately I've been deep in LLM integration, RAG, and multi-agent systems.`;
 
-export const ABOUT_TEXT = `I am a highly motivated and adaptable individual with a passion for continuous learning and professional growth. I thrive in collaborative environments, value constructive feedback, and am committed to delivering high-quality, innovative solutions. My strong work ethic and dedication enable me to contribute effectively to any team or project.`;
+export const ABOUT_TEXT = `I care about building software that actually ships. At Hallow Tech, I worked on production web applications supporting hundreds of active users — designing RESTful APIs, cutting QA bug reports and rework by ~20%, and resolving 10–15 issues per sprint in an Agile/Scrum team. Since then, I've launched my own products end-to-end: an e-commerce platform with Stripe payments, and an event-driven multi-agent system built on local and cloud LLMs. I've completed my Computer Programming diploma at Seneca Polytechnic and I'm looking for my next full-time role, anywhere in Canada.`;
 
 export const PROJECTS = [
   {
-    title: "Task Planner",
+    title: "AI-Native Organization OS",
     description:
-      "The task planner app that allows users to create, manage, and track their tasks efficiently. It features a user-friendly interface, task categorization, and deadline reminders to help users stay organized and productive.",
+      "An event-driven multi-agent framework integrating local Ollama deployments and cloud LLM APIs (DeepSeek, Gemini) to run autonomous task-planning loops, real-time RAG diagnostics, and serialized queue orchestration.",
     image: "",
-    technologies: ["Node.js", "Express.js", "postgresql", "EJS", "TailwindCSS"],
-    projectUrl: "https://task-planner-ashrees-projects.vercel.app/",
+    technologies: ["Python", "Ollama", "LLM APIs", "RAG"],
+    projectUrl: "https://github.com/ashrees/AI-Native-Organization-System",
+    status: "In Progress",
+  },
+  {
+    title: "Barahi Shop & Manager",
+    description:
+      "A full-stack e-commerce platform with product browsing, cart, and checkout via Stripe, maintaining 94% uptime. Ships with a companion admin panel for inventory and order management with role-based access control.",
+    image: "",
+    technologies: ["Node.js", "Express.js", "MongoDB", "Stripe"],
+    projectUrl: "https://www.barahishop.com/",
     status: "Completed",
   },
   {
     title: "Kirkire Pomodoro Timer",
     description:
-      "The Pomodoro timer app designed to help users manage their time effectively using the Pomodoro technique. It features customizable work and break intervals, a simple and intuitive interface, and a ai chat assistant to help users stay focused and productive.",
+      "A productivity timer built around the Pomodoro technique, featuring an integrated AI chat assistant for task guidance and focus coaching, with customizable work and break intervals.",
     image: "",
-    technologies: [
-      "HTML",
-      "TailwindCSS",
-      "Javascript",
-      "Node.js",
-      "Express.js",
-    ],
+    technologies: ["React", "TypeScript", "LLM API Integration"],
     projectUrl: "https://www.kirkire.live/",
     status: "Completed",
   },
   {
-    title: "Barahi Shop",
+    title: "Task Planner",
     description:
-      "Barahi Shop is an e-commerce platform that allows users to browse and purchase a wide range of products online. It features a user-friendly interface, payment on delivery.",
+      "A task management app for creating, categorizing, and tracking tasks, with deadline reminders and productivity analytics to keep users on schedule.",
     image: "",
-    technologies: [
-      "Node.js",
-      "Express.js",
-      "EJS",
-      "TailwindCSS",
-      "DaisyUI",
-      "MongoDB",
-      "Postgresql",
-      "nodemailer",
-      "Stripe",
-      "JWT",
-    ],
-    projectUrl: "https://www.barahishop.com/",
+    technologies: ["JavaScript", "Node.js", "PostgreSQL"],
+    projectUrl: "https://task-planner-ashrees-projects.vercel.app/",
     status: "Completed",
   },
   {
-    title: "Barahi Shop Manager",
+    title: "Multimedia Management System",
     description:
-      "Barahi Shop Manager is an admin panel for the Barahi Shop e-commerce platform. It allows administrators to manage products, orders, revenue, and inventory efficiently. The admin panel features a user-friendly interface, real-time data updates, and comprehensive analytics to help administrators make informed decisions.",
+      "A C++17 application for managing books, movies, and TV shows, built on polymorphism, STL containers, dynamic memory safety, and exception handling.",
     image: "",
-    technologies: [
-      "Node.js",
-      "Express.js",
-      "EJS",
-      "TailwindCSS",
-      "DaisyUI",
-      "MongoDB",
-      "Postgresql",
-      "nodemailer",
-      "Stripe",
-      "JWT",
-    ],
-    projectUrl: "https://www.barahishop.com/",
-    status: "Completed",
-  },
-  {
-    title: "Tuki social media",
-    description:
-      "Tuki is a social media platform that allows users to connect, share, and interact with each other. It features user profiles, posts, comments, and likes, providing a comprehensive social networking experience.",
-    image: "",
-    technologies: [
-      "React",
-      "Redux",
-      "Material-UI",
-      "Formik",
-      "Yup",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "JWT",
-      "Multer",
-    ],
+    technologies: ["C++17", "STL", "OOP"],
     projectUrl: "",
-    status: "In Progress",
-  },
-  {
-    title: "Listifyr",
-    description:
-      "Listifyr is a movies and TV shows discovery mobile app that allows users to explore, manage, and share their favorite movies and TV shows. It features a user-friendly interface, personalized recommendations, and social sharing capabilities to enhance the entertainment experience.",
-    image: "",
-    technologies: [
-      "React Native",
-      "Expo",
-      "Typescript",
-      "NativeWind",
-      "TMDB API",
-    ],
-    projectUrl: "",
-    status: "In Progress",
-  },
-  {
-    title: "Portfolio",
-    description:
-      "Personal portfolio website showcasing my skills and projects.",
-    image: "",
-    technologies: ["React", "TailwindCSS", "Framer Motion", "Vercel"],
-    projectUrl: "https://portfolio-v2-react-beta.vercel.app/",
-    status: "Completed",
-  },
-  {
-    title: "National Historic Sites of Canada",
-    description:
-      "National Historic Sites of Canada is a web application (College Assignment) that provides information about various historic sites across Canada. It features a user-friendly interface, detailed descriptions, and images of each site, allowing users to explore Canada's rich history.",
-    image: "",
-    technologies: [
-      "Node.js",
-      "Express.js",
-      "JavaScript",
-      "TailwindCSS",
-      "DaisyUI",
-      "EJS",
-      "MongoDB",
-      "PostgreSQL",
-      "helmet.js",
-      "bcrypt",
-      "multer",
-      "cookie-parser",
-    ],
-    projectUrl: "https://assignment4-web-322-liard.vercel.app/",
     status: "Completed",
   },
 ];
 
 export const EXPERIENCE = [
   {
-    year: "2021 - 2022",
-    role: "Junior Developer",
+    year: "Sep 2021 - Oct 2022",
+    role: "Junior Software Developer",
     company: "Hallow Tech Pvt. Ltd.",
     companyUrl: "https://hallow-tech.com/",
-    description: `As a Junior Developer at Hallow Tech, I contributed to the development and maintenance of various web applications. My responsibilities included writing clean and efficient code, collaborating with senior developers to implement new features, troubleshooting issues to ensure optimal performance alongside and maintaining, updating databases. This role allowed me to enhance my programming skills and gain practical experience in a professional development environment.`,
+    description: `Contributed to full-stack development of production web applications (Node.js, MongoDB, JavaScript) supporting hundreds of active users. Designed and implemented RESTful API endpoints and frontend components in an Agile/Scrum team, reducing bug reports and QA rework by ~20%. Resolved 10–15 issues per sprint and authored API documentation and onboarding guides that improved knowledge transfer across the team.`,
   }
 ]
 export const EDUCATIONS = [
   {
-    year: "2023 - Present",
-    education: "College",
+    year: "2023 - 2025",
+    education: "Computer Programming Diploma",
     school: "Seneca Polytechnic",
-    description: `During this period, I have been pursuing a comprehensive education in the field of computer programming and analysis at Seneca Polytechnic. This program has provided me with a solid foundation in both theoretical concepts and practical skills essential for a career in software development and systems analysis.`,
+    description: `Graduated from Seneca's Computer Programming program, with coursework in data structures & algorithms, object-oriented programming (C++), web programming for apps and services, software testing, and software analysis & design (UML) on UNIX/Linux.`,
     technologies: [
-      "NEXT.js",
-      "Javascript",
-      "React.js",
+      "JavaScript",
+      "TypeScript",
+      "React",
       "Node.js",
-      "mongoDB",
       "C++",
-      "C",
-      "Unix",
-      "OracleSql",
-      "tailwindcss",
-      "Bootstrap",
-      "express.js",
-      "postgresql",
-      "Visual Paradigm",
       "Python",
+      "PostgreSQL",
       "Git",
-      "EJS",
-      "Sass",
     ],
   },
   {
@@ -183,7 +88,7 @@ export const EDUCATIONS = [
     education: "Secondary School",
     school: "Angels' Heart Secondary School",
     description: `During my time at Angels' Heart Secondary School, I developed a keen interest in technology and began exploring the basics of programming and web development. This period was instrumental in building my foundational knowledge in computer science and igniting my passion for the field.`,
-    technologies: ["qbasic", "HTML", "CSS"],
+    technologies: ["HTML", "CSS"],
   },
 ];
 

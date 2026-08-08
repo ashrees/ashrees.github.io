@@ -7,3 +7,11 @@
 :root {
   font-family: "Inter", sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-neutral-900 transition-colors duration-300 dark:bg-neutral-950 dark:text-neutral-100;
+}

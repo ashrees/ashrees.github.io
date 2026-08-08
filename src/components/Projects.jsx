@@ -1,70 +1,75 @@
-import { motion } from "framer-motion";
+import Section from "./Section";
 import { PROJECTS } from "../constants/index";
+import { FiArrowUpRight } from "react-icons/fi";
+import PropTypes from "prop-types";
+
+const ProjectRow = ({ project, index }) => {
+  const content = (
+    <>
+      <div className="flex items-baseline justify-between gap-4">
+        <h3 className="font-medium text-neutral-900 transition-colors group-hover:text-neutral-500 dark:text-neutral-100 dark:group-hover:text-neutral-400">
+          <span className="mr-3 text-sm text-neutral-400 dark:text-neutral-600">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          {project.title}
+        </h3>
+        <span className="flex shrink-0 items-center gap-2 text-neutral-500 dark:text-neutral-400">
+          {project.status === "In Progress" && (
+            <span className="text-xs uppercase tracking-widest">
+              In progress
+            </span>
+          )}
+          {project.projectUrl && (
+            <FiArrowUpRight className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          )}
+        </span>
+      </div>
+      <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+        {project.description}
+      </p>
+      <p className="mt-3 text-xs tracking-wide text-neutral-500 dark:text-neutral-500">
+        {project.technologies.join(" · ")}
+      </p>
+    </>
+  );
+
+  const className =
+    "group block border-b border-neutral-200 py-6 first:border-t dark:border-neutral-800";
+
+  return project.projectUrl ? (
+    <a
+      href={project.projectUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
+      {content}
+    </a>
+  ) : (
+    <div className={className}>{content}</div>
+  );
+};
+
+ProjectRow.propTypes = {
+  project: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    projectUrl: PropTypes.string,
+    status: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 const Projects = () => {
   return (
-    <div className="border-b border-neutral-800 pb-24">
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ y: -100, opacity: 0 }}
-        transition={{ duration: 1 }}
-        className="my-20 text-center text-4xl"
-      >
-        Projects
-      </motion.h1>
+    <Section id="projects" title="Projects">
       <div>
         {PROJECTS.map((project, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ x: -100, opacity: 0 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4"
-            >
-              <h6 className="mb-2 font text-neutral-100">
-                {project.projectUrl ? (
-                  <a
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-purple-400 transition-colors duration-200"
-                  >
-                    {project.title}
-                  </a>
-                ) : (
-                  <p>{project.title}</p>
-                )}
-                {project.status === "In Progress" ? (
-                  <span className="ml-2 text-sm text-yellow-500">
-                    ({project.status})
-                  </span>
-                ) : (
-                  <span className="ml-2 text-sm text-green-500">
-                    ({project.status})
-                  </span>
-                )}
-              </h6>
-            </motion.div>
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ x: -100, opacity: 0 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
-            >
-              <p className="mb-4 text-neutral-400">{project.description}</p>
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="mr-2 mt-4 mb-0.5 inline-block rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-green-700"
-                >
-                  {tech}
-                </span>
-              ))}
-            </motion.div>
-          </div>
+          <ProjectRow key={project.title} project={project} index={index} />
         ))}
       </div>
-    </div>
+    </Section>
   );
 };
 
