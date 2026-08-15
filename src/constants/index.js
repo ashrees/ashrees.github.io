@@ -4,6 +4,22 @@ export const ABOUT_TEXT = `I care about building software that actually ships. A
 
 export const PROJECTS = [
   {
+    title: "ApexWire",
+    description:
+      "An event-driven cross-border payment and sanctions screening system. Three Spring Boot microservices communicate asynchronously over Apache Kafka — ingesting payments, screening parties against a sanctions list, and settling ledger transactions atomically in PostgreSQL with automatic reversal on failure. Ships with Docker, Kubernetes manifests, Terraform for AWS (EKS/RDS), Prometheus/Grafana observability, and a Testcontainers + Selenium E2E suite.",
+    image: "",
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "Apache Kafka",
+      "PostgreSQL",
+      "Kubernetes",
+      "Terraform",
+    ],
+    projectUrl: "https://github.com/ashrees/apex-wire",
+    status: "Completed",
+  },
+  {
     title: "AI-Native Organization OS",
     description:
       "An event-driven multi-agent framework integrating local Ollama deployments and cloud LLM APIs (DeepSeek, Gemini) to run autonomous task-planning loops, real-time RAG diagnostics, and serialized queue orchestration.",
