@@ -27,7 +27,7 @@ export const PROJECTS = [
       "A productivity timer built around the Pomodoro technique, featuring an integrated AI chat assistant for task guidance and focus coaching, with customizable work and break intervals.",
     image: "",
     technologies: ["React", "TypeScript", "LLM API Integration"],
-    projectUrl: "https://www.kirkire.live/",
+    projectUrl: "https://pomodoro-timer-xi-nine.vercel.app/",
     status: "Completed",
   },
   {
