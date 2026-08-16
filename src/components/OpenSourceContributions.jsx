@@ -3,7 +3,7 @@ import { OPEN_SOURCE_CONTRIBUTIONS } from "../constants";
 
 const OpenSourceContributions = () => {
   return (
-    <Section id="open-source" title="🔐 Open Source Contributions">
+    <Section id="open-source" title="Open Source Contributions">
       <div>
         {OPEN_SOURCE_CONTRIBUTIONS.map((item) => (
           <div
