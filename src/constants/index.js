@@ -66,6 +66,43 @@ export const PROJECTS = [
   },
 ];
 
+export const OPEN_SOURCE_CONTRIBUTIONS = [
+  {
+    project: "NVIDIA/NemoClaw",
+    projectUrl: "https://github.com/NVIDIA/NemoClaw",
+    contribution:
+      "Documented Gemini model-validation behavior and error handling, grounded in implementation source.",
+    type: "Docs",
+  },
+  {
+    project: "mui/material-ui",
+    projectUrl: "https://github.com/mui/material-ui",
+    contribution:
+      "Fixed screen-reader row count in the collapsible table demo.",
+    type: "Accessibility",
+  },
+  {
+    project: "nodejs/nodejs.org",
+    projectUrl: "https://github.com/nodejs/nodejs.org",
+    contribution:
+      "Implemented Mermaid diagram support for the MDX pipeline (maintainer-requested feature).",
+    type: "Feature",
+  },
+  {
+    project: "arichornlover/uYouEnhanced",
+    projectUrl: "https://github.com/arichornlover/uYouEnhanced",
+    contribution: "Authored a README FAQ covering the most re-filed issues.",
+    type: "Docs",
+  },
+  {
+    project: "nodejs/node",
+    projectUrl: "https://github.com/nodejs/node",
+    contribution:
+      "Traced a 15-year-old documentation gap to its 2011 changelog origin; fix landed via #65283.",
+    type: "Docs",
+  },
+];
+
 export const EXPERIENCE = [
   {
     year: "Sep 2021 - Oct 2022",
