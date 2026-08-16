@@ -5,6 +5,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 const links = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Open Source", href: "#open-source" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
