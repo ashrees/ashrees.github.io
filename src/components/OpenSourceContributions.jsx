@@ -1,30 +1,34 @@
 import Section from "./Section";
 import { OPEN_SOURCE_CONTRIBUTIONS } from "../constants";
+import { FiArrowUpRight } from "react-icons/fi";
 
 const OpenSourceContributions = () => {
   return (
-    <Section id="open-source" title="Open Source Contributions">
+    <Section id="open-source" title="Open Source">
       <div>
         {OPEN_SOURCE_CONTRIBUTIONS.map((item) => (
-          <div
+          <a
             key={item.project}
-            className="grid gap-2 border-b border-neutral-200 py-6 first:border-t md:grid-cols-[1.15fr_2fr_auto] md:gap-6 dark:border-neutral-800"
+            href={item.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block border-b border-neutral-200 py-6 first:border-t dark:border-neutral-800"
           >
-            <a
-              href={item.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-500 dark:text-neutral-100 dark:hover:text-neutral-400"
-            >
-              {item.project}
-            </a>
-            <p className="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="font-medium text-neutral-900 transition-colors group-hover:text-neutral-500 dark:text-neutral-100 dark:group-hover:text-neutral-400">
+                {item.project}
+              </h3>
+              <span className="flex shrink-0 items-center gap-2 text-neutral-500 dark:text-neutral-400">
+                <span className="text-xs uppercase tracking-widest">
+                  {item.type}
+                </span>
+                <FiArrowUpRight className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </div>
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
               {item.contribution}
             </p>
-            <p className="text-xs uppercase tracking-widest text-neutral-500 md:text-right dark:text-neutral-400">
-              {item.type}
-            </p>
-          </div>
+          </a>
         ))}
       </div>
     </Section>

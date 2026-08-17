@@ -5,7 +5,6 @@ import { FiMoon, FiSun } from "react-icons/fi";
 const links = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Open Source", href: "#open-source" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
@@ -22,15 +21,15 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-neutral-200/70 bg-white/70 backdrop-blur-md dark:border-neutral-800/70 dark:bg-neutral-950/70">
-      <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-3xl items-center justify-between gap-8 px-6 py-4">
         <a
           href="#top"
-          className="text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+          className="whitespace-nowrap text-sm font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
         >
           ashish shrees
         </a>
-        <div className="flex items-center gap-6">
-          <ul className="hidden items-center gap-6 text-sm text-neutral-500 sm:flex dark:text-neutral-400">
+        <div className="flex items-center gap-5">
+          <ul className="hidden items-center gap-5 whitespace-nowrap text-sm text-neutral-500 sm:flex dark:text-neutral-400">
             {links.map((link) => (
               <li key={link.href}>
                 <a
