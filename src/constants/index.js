@@ -68,11 +68,18 @@ export const PROJECTS = [
 
 export const OPEN_SOURCE_CONTRIBUTIONS = [
   {
-    project: "NVIDIA/NemoClaw",
+    project: "NVIDIA/NemoClaw — validation docs",
     projectUrl: "https://github.com/NVIDIA/NemoClaw/pull/9183",
     contribution:
-      "Documented Gemini model-validation behavior & error handling grounded in implementation source (PR #9183, merged), and added regression tests locking exact validation messages for Anthropic & NVIDIA endpoint paths (PR #9281, merged).",
-    type: "Docs · Tests",
+      "Documented Gemini model-validation behavior & error handling grounded in implementation source (merged).",
+    type: "Docs",
+  },
+  {
+    project: "NVIDIA/NemoClaw — inference tests",
+    projectUrl: "https://github.com/NVIDIA/NemoClaw/pull/9281",
+    contribution:
+      "Added regression tests locking exact model-validation messages for Anthropic & NVIDIA endpoint paths (merged).",
+    type: "Tests",
   },
   {
     project: "Chromium DevTools",
