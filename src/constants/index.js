@@ -1,6 +1,6 @@
-export const HERO_CONTENT = `I'm a software developer and Computer Programming graduate from Seneca Polytechnic, building web applications and RESTful APIs across the full stack — React, TypeScript, Node.js, Python, and SQL. Lately I've been deep in LLM integration, RAG, and multi-agent systems.`;
+export const HERO_CONTENT = `I'm a software developer and Computer Programming graduate from Seneca Polytechnic, building web applications and RESTful APIs across the full stack — React, TypeScript, Node.js, Python, and SQL. I contribute to open source, with merged PRs in NVIDIA NemoClaw and a fix landed in Node.js core. Lately I've been deep in LLM integration, RAG, and multi-agent systems.`;
 
-export const ABOUT_TEXT = `I care about building software that actually ships. At Hallow Tech, I worked on production web applications supporting hundreds of active users — designing RESTful APIs, cutting QA bug reports and rework by ~20%, and resolving 10–15 issues per sprint in an Agile/Scrum team. Since then, I've launched my own products end-to-end: an e-commerce platform with Stripe payments, and an event-driven multi-agent system built on local and cloud LLMs. I've completed my Computer Programming diploma at Seneca Polytechnic and I'm looking for my next full-time role, anywhere in Canada.`;
+export const ABOUT_TEXT = `I care about building software that actually ships. At Hallow Tech, I worked on production web applications supporting hundreds of active users — designing RESTful APIs, cutting QA bug reports and rework by ~20%, and resolving 10–15 issues per sprint in an Agile/Scrum team. Since then, I've launched my own products end-to-end: an e-commerce platform with Stripe payments, and an event-driven multi-agent system built on local and cloud LLMs. I've completed my Computer Programming diploma at Seneca Polytechnic and I'm looking for my next full-time role, anywhere in Canada. Outside of product work, I contribute to open source — two merged PRs in NVIDIA NemoClaw, a documentation fix landed in Node.js core, and active patches in review at Chromium DevTools, MUI, and nodejs.org.`;
 
 export const PROJECTS = [
   {
@@ -69,37 +69,45 @@ export const PROJECTS = [
 export const OPEN_SOURCE_CONTRIBUTIONS = [
   {
     project: "NVIDIA/NemoClaw",
-    projectUrl: "https://github.com/NVIDIA/NemoClaw",
+    projectUrl: "https://github.com/NVIDIA/NemoClaw/pull/9183",
     contribution:
-      "Documented Gemini model-validation behavior and error handling, grounded in implementation source.",
-    type: "Docs",
+      "Documented Gemini model-validation behavior & error handling grounded in implementation source (PR #9183, merged), and added regression tests locking exact validation messages for Anthropic & NVIDIA endpoint paths (PR #9281, merged).",
+    type: "Docs · Tests",
+  },
+  {
+    project: "Chromium DevTools",
+    projectUrl:
+      "https://chromium-review.googlesource.com/c/devtools/devtools-frontend/+/8263748",
+    contribution:
+      "Added unit test coverage for the TypeScriptUtilities assert helpers used across the DevTools front-end (Gerrit CL, in review).",
+    type: "Tests",
   },
   {
     project: "mui/material-ui",
-    projectUrl: "https://github.com/mui/material-ui",
+    projectUrl: "https://github.com/mui/material-ui/pull/48968",
     contribution:
-      "Fixed screen-reader row count in the collapsible table demo.",
+      "Fixed screen-reader row count in the collapsible table demo (in review).",
     type: "Accessibility",
   },
   {
     project: "nodejs/nodejs.org",
-    projectUrl: "https://github.com/nodejs/nodejs.org",
+    projectUrl: "https://github.com/nodejs/nodejs.org/pull/9107",
     contribution:
-      "Implemented Mermaid diagram support for the MDX pipeline (maintainer-requested feature).",
+      "Implemented Mermaid diagram support for the MDX pipeline, maintainer-requested (in review).",
     type: "Feature",
   },
   {
     project: "arichornlover/uYouEnhanced",
-    projectUrl: "https://github.com/arichornlover/uYouEnhanced",
-    contribution: "Authored a README FAQ covering the most re-filed issues.",
+    projectUrl: "https://github.com/arichornlover/uYouEnhanced/pull/985",
+    contribution: "Authored a README FAQ covering the most re-filed issues (in review).",
     type: "Docs",
   },
   {
     project: "nodejs/node",
-    projectUrl: "https://github.com/nodejs/node",
+    projectUrl: "https://github.com/nodejs/node/issues/65280",
     contribution:
-      "Traced a 15-year-old documentation gap to its 2011 changelog origin; fix landed via #65283.",
-    type: "Docs",
+      "Traced a 15-year-old documentation gap in fs.lchmod to its 2011 changelog origin; the diagnosis was adopted and the fix landed in Node.js core via #65283.",
+    type: "Research",
   },
 ];
 
