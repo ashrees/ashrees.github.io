@@ -97,13 +97,6 @@ export const OPEN_SOURCE_CONTRIBUTIONS = [
     type: "Accessibility",
   },
   {
-    project: "nodejs/nodejs.org",
-    projectUrl: "https://github.com/nodejs/nodejs.org/pull/9107",
-    contribution:
-      "Implemented Mermaid diagram support for the MDX pipeline, maintainer-requested (in review).",
-    type: "Feature",
-  },
-  {
     project: "arichornlover/uYouEnhanced",
     projectUrl: "https://github.com/arichornlover/uYouEnhanced/pull/985",
     contribution: "Authored a README FAQ covering the most re-filed issues (in review).",
