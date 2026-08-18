@@ -82,19 +82,12 @@ export const OPEN_SOURCE_CONTRIBUTIONS = [
     type: "Tests",
   },
   {
-    project: "Chromium DevTools",
+    project: "Chromium DevTools (Google)",
     projectUrl:
       "https://chromium-review.googlesource.com/c/devtools/devtools-frontend/+/8263748",
     contribution:
       "Added unit test coverage for the TypeScriptUtilities assert helpers used across the DevTools front-end (Gerrit CL, in review).",
     type: "Tests",
-  },
-  {
-    project: "mui/material-ui",
-    projectUrl: "https://github.com/mui/material-ui/pull/48968",
-    contribution:
-      "Fixed screen-reader row count in the collapsible table demo (in review).",
-    type: "Accessibility",
   },
   {
     project: "arichornlover/uYouEnhanced",
