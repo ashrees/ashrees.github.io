@@ -86,7 +86,7 @@ export const OPEN_SOURCE_CONTRIBUTIONS = [
     projectUrl:
       "https://chromium-review.googlesource.com/c/devtools/devtools-frontend/+/8263748",
     contribution:
-      "Added unit test coverage for the TypeScriptUtilities assert helpers used across the DevTools front-end (Gerrit CL, in review).",
+      "Added unit test coverage for the TypeScriptUtilities assert helpers used across the DevTools front-end (merged).",
     type: "Tests",
   },
   {
