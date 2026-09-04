@@ -48,7 +48,7 @@ const Contact = () => {
           </a>
         </div>
       </Section>
-      <footer className="border-t border-neutral-200 py-8 text-center text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-500">
+      <footer className="border-t border-neutral-200 py-8 text-center text-xs text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
         © {new Date().getFullYear()} Ashish Shrees. Built with React &
         Tailwind CSS.
       </footer>

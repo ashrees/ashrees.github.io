@@ -24,7 +24,7 @@ const Experience = () => {
                 {exp.company}
               </a>
             </h3>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-copy dark:text-neutral-400">
               {exp.description}
             </p>
           </div>

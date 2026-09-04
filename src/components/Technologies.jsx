@@ -76,7 +76,7 @@ const Technologies = () => {
               {category.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="rounded-full border border-neutral-200 px-3.5 py-1.5 text-sm text-neutral-600 transition-colors hover:border-neutral-900 hover:text-neutral-900 dark:border-neutral-800 dark:text-neutral-400 dark:hover:border-neutral-400 dark:hover:text-white"
+                  className="rounded-full border border-neutral-200 px-3.5 py-1.5 text-sm text-neutral-500 transition-colors hover:border-neutral-900 hover:text-neutral-900 dark:border-neutral-800 dark:text-neutral-400 dark:hover:border-neutral-400 dark:hover:text-white"
                 >
                   {skill}
                 </li>

@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import DotField from "./components/DotField";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Technologies from "./components/Technologies";
@@ -10,9 +11,12 @@ import OpenSourceContributions from "./components/OpenSourceContributions";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white dark:bg-neutral-950 dark:text-neutral-100 dark:selection:bg-white dark:selection:text-neutral-900">
+    // No background here on purpose: the page colour lives on <body> so the
+    // DotField canvas can sit above it and below the content.
+    <div className="min-h-screen text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white dark:text-neutral-100 dark:selection:bg-white dark:selection:text-neutral-900">
+      <DotField />
       <Navbar />
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="relative z-10 mx-auto max-w-3xl px-5 sm:px-6">
         <Hero />
         <About />
         <Technologies />

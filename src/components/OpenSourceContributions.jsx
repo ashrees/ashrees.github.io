@@ -25,7 +25,7 @@ const OpenSourceContributions = () => {
                 <FiArrowUpRight className="text-lg transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-copy dark:text-neutral-400">
               {item.contribution}
             </p>
           </a>

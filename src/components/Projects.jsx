@@ -24,7 +24,7 @@ const ProjectRow = ({ project, index }) => {
           )}
         </span>
       </div>
-      <p className="mt-2 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+      <p className="mt-2 max-w-xl text-sm leading-relaxed text-copy dark:text-neutral-400">
         {project.description}
       </p>
       <p className="mt-3 text-xs tracking-wide text-neutral-500 dark:text-neutral-500">

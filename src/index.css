@@ -10,8 +10,271 @@
 
 html {
   scroll-behavior: smooth;
+  /* Safety net: nothing should ever push the page sideways on a phone.
+     `clip` rather than `hidden` so position: sticky keeps working. */
+  overflow-x: clip;
 }
 
 body {
   @apply bg-white text-neutral-900 transition-colors duration-300 dark:bg-neutral-950 dark:text-neutral-100;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================================================
+ * .glass-pill — Apple-style liquid glass.
+ *
+ * What separates Apple's Liquid Glass from 2020-era glassmorphism is that it
+ * REFRACTS: light bends through a curved bezel, so the edge of the panel
+ * samples the background differently from its middle, and a specular rim
+ * tracks a fixed light source. Plain blur-and-tint has none of that and reads
+ * flat.
+ *
+ * Apple's own approach — and the faithful web recreation — drives an SVG
+ * displacement map through `backdrop-filter: url(#filter)`. That is CHROME
+ * ONLY; Safari and Firefox ignore SVG filters in backdrop-filter, and since
+ * this is a portfolio people will open on Macs and iPhones, shipping an effect
+ * that vanishes on Safari is the wrong trade.
+ *
+ * So the bend is built from parts every browser has:
+ *   - the body blurs and boosts saturation, the way glass concentrates colour
+ *   - ::before re-filters a narrow band at the RIM with a lighter blur and
+ *     more brightness, so the edge resolves differently from the centre —
+ *     which is what refraction actually looks like
+ *   - ::after paints a 1px specular rim, brightest top-left, catching again at
+ *     the opposite edge like light wrapping a curved body
+ *   - layered inset shadows give the slab thickness rather than a flat film
+ * ========================================================================== */
+@layer components {
+  .glass-pill {
+    position: relative;
+    isolation: isolate;
+    border-radius: 9999px;
+    border: 0;
+    color: theme('colors.neutral.900');
+    background: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.5),
+      rgb(255 255 255 / 0.2)
+    );
+    -webkit-backdrop-filter: blur(18px) saturate(190%) brightness(1.08);
+    backdrop-filter: blur(18px) saturate(190%) brightness(1.08);
+    box-shadow:
+      0 2px 5px -2px rgb(15 15 15 / 0.13),
+      0 10px 24px -10px rgb(15 15 15 / 0.28),
+      inset 0 1px 0 rgb(255 255 255 / 0.95),
+      inset 0 -2px 2px -1px rgb(0 0 0 / 0.07),
+      inset 0 0 0 1px rgb(0 0 0 / 0.055),
+      inset 0 0 16px rgb(255 255 255 / 0.2);
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.18s ease,
+      background 0.3s ease;
+  }
+
+  /* The bezel: a narrow band that refracts differently from the middle.
+     Its blur must stay HIGH. At 3px the dot field resolved as individual
+     specks in the rim and the button read as a smudge with the background
+     leaking through its edge. The refraction cue comes from the brightness
+     and saturation difference, which costs no clarity. */
+  .glass-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    border-radius: inherit;
+    -webkit-backdrop-filter: blur(11px) brightness(1.16) saturate(220%);
+    backdrop-filter: blur(11px) brightness(1.16) saturate(220%);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* the specular rim: a fixed light, catching hardest at the top-left */
+  .glass-pill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      140deg,
+      rgb(255 255 255 / 0.98),
+      rgb(0 0 0 / 0.1) 36%,
+      rgb(0 0 0 / 0.07) 58%,
+      rgb(255 255 255 / 0.85)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glass-pill:hover {
+    background: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.46),
+      rgb(255 255 255 / 0.16)
+    );
+    box-shadow:
+      0 2px 6px -2px rgb(15 15 15 / 0.15),
+      0 14px 30px -12px rgb(15 15 15 / 0.34),
+      inset 0 1px 0 rgb(255 255 255 / 1),
+      inset 0 -2px 2px -1px rgb(0 0 0 / 0.08),
+      inset 0 0 0 1px rgb(0 0 0 / 0.06),
+      inset 0 0 20px rgb(255 255 255 / 0.28);
+  }
+
+  /* the border carried the keyboard focus cue before, so replace it */
+  .glass-pill:focus-visible {
+    outline: 2px solid rgb(23 23 23 / 0.85);
+    outline-offset: 3px;
+  }
+
+  .dark .glass-pill:focus-visible {
+    outline-color: rgb(250 250 250 / 0.85);
+  }
+
+  /* glass is a physical object: it should give slightly when pressed */
+  .glass-pill:active {
+    transform: scale(0.97);
+  }
+
+  /* Dark mode is the opposite problem to light mode. On a near-black page ANY
+     white fill reads as opaque grey — 16% white over #0a0a0a lands around
+     RGB 49, which is a solid dark button, not glass. And brightening a
+     near-black backdrop achieves nothing, because there is nothing there.
+     So the fill drops to almost nothing and the glass earns its shape from
+     the rim, the shadow and a hard LIFT of whatever passes behind it. */
+  .dark .glass-pill {
+    color: theme('colors.neutral.50');
+    background: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.05),
+      rgb(255 255 255 / 0.012)
+    );
+    -webkit-backdrop-filter: blur(16px) saturate(200%) brightness(1.55);
+    backdrop-filter: blur(16px) saturate(200%) brightness(1.55);
+    box-shadow:
+      0 10px 28px -12px rgb(0 0 0 / 0.85),
+      inset 0 1px 0 rgb(255 255 255 / 0.28),
+      inset 0 -1px 1px rgb(0 0 0 / 0.5),
+      inset 0 0 0 1px rgb(255 255 255 / 0.09);
+  }
+
+  .dark .glass-pill:hover {
+    background: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.1),
+      rgb(255 255 255 / 0.035)
+    );
+    -webkit-backdrop-filter: blur(16px) saturate(210%) brightness(1.8);
+    backdrop-filter: blur(16px) saturate(210%) brightness(1.8);
+    box-shadow:
+      0 14px 34px -14px rgb(0 0 0 / 0.9),
+      inset 0 1px 0 rgb(255 255 255 / 0.42),
+      inset 0 -1px 1px rgb(0 0 0 / 0.55),
+      inset 0 0 0 1px rgb(255 255 255 / 0.14);
+  }
+
+  .dark .glass-pill::before {
+    -webkit-backdrop-filter: blur(12px) brightness(1.8) saturate(230%);
+    backdrop-filter: blur(12px) brightness(1.8) saturate(230%);
+  }
+
+  .dark .glass-pill::after {
+    background: linear-gradient(
+      140deg,
+      rgb(255 255 255 / 0.6),
+      rgb(255 255 255 / 0.1) 34%,
+      rgb(255 255 255 / 0) 56%,
+      rgb(255 255 255 / 0.34)
+    );
+  }
+
+  /* ==========================================================================
+     REAL REFRACTION — Chromium only, layered on top of everything above.
+
+     The `.glass-refract` class is added at startup by src/lib/glassRefraction.js
+     once it has confirmed the browser can run an SVG filter inside
+     backdrop-filter, and that file also injects the #glass-warp displacement
+     map. Nothing here applies otherwise, so Safari and Firefox keep the
+     approximation and lose nothing.
+
+     Two deliberate changes when the bend is real:
+       - the blur DROPS. A heavy blur averages away the very displacement it is
+         sitting on top of; 9px keeps the bent edge legible as a bend.
+       - the ::before bezel eases off. It exists to FAKE the edge-versus-middle
+         difference that refraction produces for free, so leaving it at full
+         strength doubles the effect and reads as a halo.
+     ====================================================================== */
+  .glass-refract .glass-pill {
+    -webkit-backdrop-filter: url(#glass-warp) blur(9px) saturate(185%) brightness(1.06);
+    backdrop-filter: url(#glass-warp) blur(9px) saturate(185%) brightness(1.06);
+  }
+
+  .glass-refract .glass-pill::before {
+    -webkit-backdrop-filter: blur(5px) brightness(1.07) saturate(150%);
+    backdrop-filter: blur(5px) brightness(1.07) saturate(150%);
+  }
+
+  .glass-refract.dark .glass-pill,
+  .dark .glass-refract .glass-pill {
+    -webkit-backdrop-filter: url(#glass-warp) blur(8px) saturate(195%) brightness(1.5);
+    backdrop-filter: url(#glass-warp) blur(8px) saturate(195%) brightness(1.5);
+  }
+
+  .glass-refract.dark .glass-pill::before,
+  .dark .glass-refract .glass-pill::before {
+    -webkit-backdrop-filter: blur(6px) brightness(1.4) saturate(160%);
+    backdrop-filter: blur(6px) brightness(1.4) saturate(160%);
+  }
+
+  /* No backdrop-filter (older Firefox): fall back to something solid enough
+     to keep the label readable rather than a transparent smear. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass-pill {
+      background: rgb(255 255 255 / 0.92);
+    }
+    .dark .glass-pill {
+      background: rgb(38 38 38 / 0.92);
+    }
+  }
+
+  /* Respect a stated preference for less transparency. */
+  @media (prefers-reduced-transparency: reduce) {
+    .glass-pill {
+      background: rgb(255 255 255 / 0.95);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .dark .glass-pill {
+      background: rgb(38 38 38 / 0.95);
+    }
+    .glass-pill::before {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glass-pill:active {
+      transform: none;
+    }
+  }
 }
