@@ -16,7 +16,7 @@ const Education = () => {
             <h3 className="mt-2 font-medium text-neutral-900 dark:text-neutral-100">
               {edu.education} · {edu.school}
             </h3>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-copy dark:text-neutral-400">
               {edu.description}
             </p>
             <p className="mt-3 text-xs tracking-wide text-neutral-500 dark:text-neutral-500">

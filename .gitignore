@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Source footage for the dot field. The committed artefact is the depth sheet
+# in public/figures, built by scripts/clip_to_depth.py — the original clips are
+# tens of megabytes and belong outside the repo.
+src/assets/*.webm
+*.mp4
+*.mov
